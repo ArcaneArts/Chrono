@@ -8,7 +8,7 @@ group 'art.arcane'
 version '1.0-SNAPSHOT'
 
 repositories {
-    maven { url "https://dl.cloudsmith.io/public/arcane/archive/maven/" }
+    maven { url "https://arcanearts.jfrog.io/artifactory/archives" }
     mavenCentral()
 }
 
@@ -31,11 +31,10 @@ publishing {
         maven {
             name = "cloudsmith"
             version = System.getenv("CLOUDSMITH_VERSION")
-            url = "https://maven.cloudsmith.io/arcane/archive/"
-            url = "https://maven.cloudsmith.io/arcane/archive/"
+            url = "https://arcanearts.jfrog.io/artifactory/archives"
             credentials {
-                username = System.getenv("CLOUDSMITH_USERNAME")
-                password = System.getenv("CLOUDSMITH_PASSWORD")
+                username = System.getenv("JFROG_USERNAME")
+                password = System.getenv("JFROG_PASSWORD")
             }
         }
     }
