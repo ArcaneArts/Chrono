@@ -31,7 +31,7 @@ publishing {
         maven {
             name = "jfrog"
             version = System.getenv("JFROG_VERSION")
-            url = "https://arcanearts.jfrog.io/artifactory/archives"
+            url = "https://arcanearts.jfrog.io/artifactory/arcane"
             credentials {
                 username = System.getenv("JFROG_USERNAME")
                 password = System.getenv("JFROG_PASSWORD")
