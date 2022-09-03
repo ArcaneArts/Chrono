@@ -29,8 +29,8 @@ publishing {
     }
     repositories {
         maven {
-            name = "cloudsmith"
-            version = System.getenv("CLOUDSMITH_VERSION")
+            name = "jfrog"
+            version = System.getenv("JFROG_VERSION")
             url = "https://arcanearts.jfrog.io/artifactory/archives"
             credentials {
                 username = System.getenv("JFROG_USERNAME")
