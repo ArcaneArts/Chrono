@@ -6,9 +6,10 @@ plugins {
 }
 
 group 'art.arcane'
-version System.getenv("JFROG_VERSION") ?: '1.0-SNAPSHOT'
+version System.getenv("JFROG_VERSION") ?: '1.0.0'
 
 repositories {
+    mavenLocal()
     maven { url "https://arcanearts.jfrog.io/artifactory/archives" }
     mavenCentral()
 }
@@ -22,6 +23,8 @@ test {
     useJUnitPlatform()
 }
 
+System.out.println(System.getenv("JFROG_USERNAME"))
+
 artifactory {
     publish {
         contextUrl = 'https://arcanearts.jfrog.io/artifactory'
@@ -29,6 +32,13 @@ artifactory {
             repoKey = 'arcane'
             username = System.getenv("JFROG_USERNAME")
             password = System.getenv("JFROG_PASSWORD")
+        }
+        defaults {
+            publications ('mavenJava')
+            publishConfigs('archives', 'published')
+            publishBuildInfo = true
+            publishArtifacts = true
+            publishPom = true
         }
     }
 }
@@ -41,12 +51,7 @@ publishing {
     }
     repositories {
         maven {
-            name = "jfrog"
-            url = "https://arcanearts.jfrog.io/artifactory"
-            credentials {
-                username = System.getenv("JFROG_USERNAME")
-                password = System.getenv("JFROG_PASSWORD")
-            }
+            url = "https://arcanearts.jfrog.io/artifactory/arcane"
         }
     }
 }
