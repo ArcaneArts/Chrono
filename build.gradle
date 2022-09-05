@@ -23,8 +23,6 @@ test {
     useJUnitPlatform()
 }
 
-System.out.println(System.getenv("JFROG_USERNAME"))
-
 artifactory {
     publish {
         contextUrl = 'https://arcanearts.jfrog.io/artifactory'
